@@ -1,9 +1,12 @@
 package com.oreste.accountcrud.model;
 
+import org.springframework.beans.factory.annotation.Required;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity(name = "account")
 public class Account {
@@ -13,6 +16,7 @@ public class Account {
     private Long id;
 
     @Column(name = "account_name")
+    @NotNull
     private String name;
 
     @Override

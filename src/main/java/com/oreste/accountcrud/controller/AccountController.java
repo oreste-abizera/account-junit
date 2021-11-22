@@ -18,7 +18,7 @@ public class AccountController {
     @Autowired
     private AccountService service;
 
-    @RequestMapping(path = "/account/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "api/v1/accounts/{id}", method = RequestMethod.GET)
     public ResponseEntity<Account> getAccountById(@PathVariable Long id) {
         if (!service.isAccountPresent(id)) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
@@ -31,12 +31,12 @@ public class AccountController {
         return ResponseEntity.ok(service.getAccounts());
     }
 
-    @RequestMapping(path = "api/v1/account", method = RequestMethod.POST)
+    @RequestMapping(path = "api/v1/accounts", method = RequestMethod.POST)
     public ResponseEntity<Account> addAccount(@RequestBody Account account) {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.addAccount(account));
     }
 
-    @RequestMapping(path = "api/v1/account/{id}", method = RequestMethod.PUT)
+    @RequestMapping(path = "api/v1/accounts/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Account> updateAccount(@PathVariable Long id, @RequestBody Account account) {
         if (!service.isAccountPresent(id)) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
@@ -44,7 +44,7 @@ public class AccountController {
         return ResponseEntity.ok(service.updateAccount(id, account));
     }
 
-    @RequestMapping(path = "api/v1/account/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(path = "api/v1/accounts/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<String> deleteAccount(@PathVariable Long id) {
         if (!service.isAccountPresent(id)) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);

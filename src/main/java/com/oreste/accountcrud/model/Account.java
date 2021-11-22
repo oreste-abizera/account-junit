@@ -19,6 +19,14 @@ public class Account {
     @NotNull
     private String name;
 
+    public Account(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Account() {
+    }
+
     @Override
     public String toString() {
         return "Account [id=" + id + ", name=" + name + "]";
